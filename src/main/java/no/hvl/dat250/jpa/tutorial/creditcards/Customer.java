@@ -2,25 +2,24 @@ package no.hvl.dat250.jpa.tutorial.creditcards;
 
 import java.util.Collection;
 import jakarta.persistence.*;
+import lombok.Getter;
 
 @Entity
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Getter
+    private String name;
 
-    public String getName() {
-        // TODO: implement method!
-        return null;
-    }
+    @Getter
+    @ManyToMany
+    private final Collection<Address> addresses = null;
 
-    public Collection<Address> getAddresses() {
-        // TODO: implement method!
-        return null;
-    }
+    @OneToMany(mappedBy = "customer")
+    private final Collection<CreditCard> creditcards = null;
 
     public Collection<CreditCard> getCreditCards() {
-        // TODO: implement method!
-        return null;
+        return creditcards;
     }
 }

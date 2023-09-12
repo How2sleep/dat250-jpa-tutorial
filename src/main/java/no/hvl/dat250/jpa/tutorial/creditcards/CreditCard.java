@@ -1,6 +1,7 @@
 package no.hvl.dat250.jpa.tutorial.creditcards;
 
 import jakarta.persistence.*;
+import lombok.Getter;
 
 @Entity
 public class CreditCard {
@@ -8,29 +9,21 @@ public class CreditCard {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Getter
+    private Integer number;
+    @Getter
+    private Integer balance;
+    @Getter
+    private Integer creditLimit;
 
-    public Integer getNumber() {
-        // TODO: implement method!
-        return null;
-    }
+    @ManyToOne
+    private Bank bank;
 
-    public Integer getBalance() {
-        // TODO: implement method!
-        return null;
-    }
-
-    public Integer getCreditLimit() {
-        // TODO: implement method!
-        return null;
-    }
-
-    public Pincode getPincode() {
-        // TODO: implement method!
-        return null;
-    }
+    @Getter
+    @ManyToOne
+    private Pincode pincode;
 
     public Bank getOwningBank() {
-        // TODO: implement method!
-        return null;
+        return bank;
     }
 }
