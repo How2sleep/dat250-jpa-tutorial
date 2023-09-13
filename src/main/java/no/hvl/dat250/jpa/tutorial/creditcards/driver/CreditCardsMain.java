@@ -34,12 +34,12 @@ public class CreditCardsMain {
     creditCard.setBalance(-5000);
     creditCard.setCreditLimit(-10000);
 
-
     CreditCard creditCard2 = new CreditCard();
     creditCard2.setNumber(123);
     creditCard2.setBalance(1);
     creditCard2.setCreditLimit(2000);
-
+    customer.addCreditCard(creditCard);
+    customer.addCreditCard(creditCard2);
 
     Pincode pincode = new Pincode();
     pincode.setPincode("123");
@@ -61,5 +61,5 @@ public class CreditCardsMain {
     em.persist(creditCard2);
     em.persist(pincode);
     em.persist(bank);
-  }
+    }
 }

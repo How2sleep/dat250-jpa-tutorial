@@ -2,6 +2,9 @@ package no.hvl.dat250.jpa.tutorial.creditcards;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
+
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -16,11 +19,11 @@ public class Customer {
     private String name;
 
 
-    @ManyToMany(targetEntity = Address.class)
-    private Collection<Address> addresses = new ArrayList<>();
+    @ManyToMany(mappedBy = "owners")
+    private Set<Address> addresses = new HashSet<>();
 
-    @OneToMany
-    private Collection<CreditCard> CreditCards;
+    @ManyToMany
+    private Set<CreditCard> CreditCards = new HashSet<>();
 
     public String getName() {
         return name;
@@ -30,22 +33,22 @@ public class Customer {
         this.name = name;
     }
 
-    public Collection<Address> getAddresses() {
+    public Set<Address> getAddresses() {
         return addresses;
     }
 
-    public void setAddresses(Collection<Address> addresses) {
+    public void setAddresses(HashSet addresses) {
         this.addresses = addresses;
     }
     public void addAddress(Address address) {
         addresses.add(address);
     }
 
-    public Collection<CreditCard> getCreditCards() {
+    public Set<CreditCard> getCreditCards() {
         return CreditCards;
     }
 
-    public void setCreditCards(Collection<CreditCard> creditCards) {
+    public void setCreditCards(HashSet<CreditCard> creditCards) {
         CreditCards = creditCards;
     }
     public void addCreditCard(CreditCard creditCard) {

@@ -6,6 +6,8 @@ import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Bank {
@@ -16,7 +18,7 @@ public class Bank {
 
     private String name;
     @OneToMany(mappedBy = "bank")
-    private Collection<CreditCard> creditCards = new ArrayList<>();
+    private Set<CreditCard> creditCards = new HashSet<>();
 
     public String getName() {
         return name;
@@ -26,11 +28,11 @@ public class Bank {
         this.name = name;
     }
 
-    public Collection<CreditCard> getOwnedCards() {
+    public Set<CreditCard> getOwnedCards() {
         return creditCards;
     }
 
-    public void setCreditCards(Collection<CreditCard> creditCards) {
+    public void setCreditCards(HashSet creditCards) {
         this.creditCards = creditCards;
     }
     public void addCreditCard(CreditCard creditCard) {

@@ -1,8 +1,6 @@
 package no.hvl.dat250.jpa.tutorial.creditcards;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
+import java.util.*;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -20,8 +18,8 @@ public class Address {
 
 
 
-    @ManyToMany(targetEntity = Customer.class)
-    private Collection<Customer> owners =new ArrayList<>();
+    @ManyToMany
+    private Set<Customer> owners =new HashSet<>();
 
     public String getStreet() {
         return street;
@@ -39,11 +37,11 @@ public class Address {
         this.number = number;
     }
 
-    public Collection<Customer> getOwners() {
+    public Set<Customer> getOwners() {
         return owners;
     }
 
-    public void setOwners(Collection<Customer> owners) {
+    public void setOwners(HashSet<Customer> owners) {
         this.owners = owners;
     }
     public void addOwner(Customer customer) {
